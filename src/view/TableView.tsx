@@ -1,7 +1,13 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { headers, rows, TableDataModel } from "../model/tableDataModel";
+import { TableDataModel } from "../model/tableDataModel";
+import { FC } from "react";
 
-export default function TableView () {
+interface TableViewProps {
+    headers: string[]
+    rows: TableDataModel[]
+}
+
+export const TableView: FC<TableViewProps> = ({headers, rows}) => {
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">

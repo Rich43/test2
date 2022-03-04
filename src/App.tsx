@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import TableView from "./view/TableView";
+import { headers, rows } from "./model/tableDataModel";
+import { TableView } from "./view/TableView";
 
 function App() {
   return (
     <div className="App">
-      <TableView />
+      <TableView headers={headers} rows={rows} />
     </div>
   );
 }
