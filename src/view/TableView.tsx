@@ -1,17 +1,13 @@
-import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
-import { rows } from "../model/tableDataModel";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { headers, rows, TableDataModel } from "../model/tableDataModel";
 
-export default function TableView() {
+export default function TableView () {
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">Calories</TableCell>
-                        <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                        <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                        <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                        {headers.map(row => (<TableCell>{row}</TableCell>))}
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -20,13 +16,7 @@ export default function TableView() {
                             key={row.name}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell component="th" scope="row">
-                                {row.name}
-                            </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
-                            <TableCell align="right">{row.protein}</TableCell>
+                            {Object.keys(row).map(key => <TableCell>{row[key as keyof TableDataModel]}</TableCell>)}
                         </TableRow>
                     ))}
                 </TableBody>
