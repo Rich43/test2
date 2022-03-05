@@ -1,17 +1,35 @@
 export const headers = ['Dessert (100g serving)', 'Calories', 'Fat (g)', 'Carbs (g)', 'Protein (g)'];
 
 export interface TableDataModel {
-    name: string,
-    calories: number,
-    fat: number,
-    carbs: number,
-    protein: number
+    courseId: number,
+    startDate: string,
+    endDate: string,
+    qualificationType: string
 }
 
-export const rows: TableDataModel[] = [
-    {name: 'Frozen yoghurt', calories: 159, fat: 6.0, carbs: 24, protein: 4.0},
-    {name: 'Ice cream sandwich', calories: 237, fat: 9.0, carbs: 37, protein: 4.3}
-];
+export interface Courses {
+    courses: Course[]
+}
 
+export interface Student {
+    id: string,
+    name: string
+}
 
-export const getData = fetch('https://www.qualsafe.com/getCourses.php?action=getUnpaid');
+export interface Course {
+    id: string,
+    start: string,
+    end: string,
+    qualification: string,
+    students: Student[]
+}
+
+export const fetchData = () => fetch('https://www.qualsafe.com/getCourses.php?action=getUnpaid');
+
+export function stripFunction(text: string) {
+    let newText = text.trim();
+    return  newText.slice(
+        newText.indexOf('(') + 1,
+        (newText.length - 1) - newText.split('').reverse().join('').indexOf(')')
+    );
+}
