@@ -4,7 +4,7 @@ module.exports = function (app) {
     app.use(
         '/api',
         createProxyMiddleware({
-            target: 'https://www.qualsafe.com/getCourses.php?action=getUnpaid',
+            target: 'http://localhost/api', // Workaround as the website is broken, run prod locally, see readme.
             changeOrigin: true,
             secure: false,
             pathRewrite: {
