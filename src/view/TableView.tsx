@@ -1,12 +1,12 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { TableDataModel } from "../model/tableDataModel";
 import { FC } from "react";
+import TableViewRow from "./TableViewRow";
 
 interface TableViewProps {
     headers: string[]
     rows: TableDataModel[]
 }
-
 
 export const TableView: FC<TableViewProps> = ({ headers, rows }) => {
     return (
@@ -18,14 +18,7 @@ export const TableView: FC<TableViewProps> = ({ headers, rows }) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
-                        <TableRow
-                            key={row.courseId}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            {Object.keys(row).map(key => <TableCell>{row[key as keyof TableDataModel]}</TableCell>)}
-                        </TableRow>
-                    ))}
+                    {rows.map((row) => <TableViewRow row={row}/>)}
                 </TableBody>
             </Table>
         </TableContainer>
