@@ -1,4 +1,4 @@
-export const headers = ['Dessert (100g serving)', 'Calories', 'Fat (g)', 'Carbs (g)', 'Protein (g)'];
+export const headers = ['Course Id', 'Start Date', 'End Date', 'Qualification Type'];
 
 export interface TableDataModel {
     courseId: number,
