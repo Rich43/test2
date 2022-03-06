@@ -24,7 +24,7 @@ export interface Course {
     students: Student[]
 }
 
-export const fetchData = () => fetch('https://www.qualsafe.com/getCourses.php?action=getUnpaid');
+export const fetchData = () => fetch('/api');
 
 export function stripFunction(text: string) {
     let newText = text.trim();
