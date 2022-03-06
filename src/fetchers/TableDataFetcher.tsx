@@ -1,7 +1,17 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Courses, fetchData, stripFunction, TableDataModel } from "../model/tableDataModel";
+import { Courses, TableDataModel } from "../model/tableDataModel";
 
 interface Props {
+}
+
+const fetchData = () => fetch('/api');
+
+function stripFunction (text: string) {
+    let newText = text.trim();
+    return newText.slice(
+        newText.indexOf('(') + 1,
+        (newText.length - 1) - newText.split('').reverse().join('').indexOf(')')
+    );
 }
 
 export const TableDataFetcherContext = React.createContext<TableDataModel[]>([]);

@@ -23,13 +23,3 @@ export interface Course {
     qualification: string,
     students: Student[]
 }
-
-export const fetchData = () => fetch('/api');
-
-export function stripFunction(text: string) {
-    let newText = text.trim();
-    return  newText.slice(
-        newText.indexOf('(') + 1,
-        (newText.length - 1) - newText.split('').reverse().join('').indexOf(')')
-    );
-}
