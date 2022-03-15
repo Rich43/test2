@@ -2,6 +2,7 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow
 import { Course } from "../model/tableDataModel";
 import { FC } from "react";
 import CollapsibleTableViewRow from "./CollapsibleTableViewRow";
+import TableViewRow from "./TableViewRow";
 
 interface TableViewProps {
     headers: string[]
@@ -18,7 +19,7 @@ export const TableView: FC<TableViewProps> = ({ headers, rows }) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => <CollapsibleTableViewRow row={row}/>)}
+                    {rows.map((row) => <TableViewRow row={row} CollapsableTableViewRow={CollapsibleTableViewRow}/>)}
                 </TableBody>
             </Table>
         </TableContainer>
