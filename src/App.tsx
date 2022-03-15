@@ -9,7 +9,7 @@ function App () {
         <div className="App">
             <TableDataFetcher>
                 <TableDataFetcherContext.Consumer>
-                    {rows => <TableView headers={headers} rows={rows}/>}
+                    {courses => <TableView headers={headers} rows={courses.courses}/>}
                 </TableDataFetcherContext.Consumer>
             </TableDataFetcher>
         </div>

@@ -1,11 +1,11 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { TableDataModel } from "../model/tableDataModel";
+import { Course } from "../model/tableDataModel";
 import { FC } from "react";
 import TableViewRow from "./TableViewRow";
 
 interface TableViewProps {
     headers: string[]
-    rows: TableDataModel[]
+    rows: Course[]
 }
 
 export const TableView: FC<TableViewProps> = ({ headers, rows }) => {

@@ -1,16 +1,17 @@
 import React, { FunctionComponent } from 'react';
-import { TableDataModel } from "../model/tableDataModel";
+import { Course } from "../model/tableDataModel";
 import { TableCell, TableRow } from "@mui/material";
 
 interface Props {
-    row: TableDataModel
+    row: Course
 }
 
 export const TableViewRow: FunctionComponent<Props> = ({ row }) => {
     return <TableRow
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
-        {Object.keys(row).map(key => <TableCell>{row[key as keyof TableDataModel]}</TableCell>)}
+        {Object.keys(row).map(key => typeof row[key as keyof Course] === 'string' ?
+            <TableCell>{row[key as keyof Course]}</TableCell> : <></>)}
     </TableRow>;
 };
 
