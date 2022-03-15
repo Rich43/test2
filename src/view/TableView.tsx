@@ -1,8 +1,9 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { Course } from "../model/tableDataModel";
 import { FC } from "react";
-import CollapsibleTableViewRow from "./CollapsibleTableViewRow";
+import CollapsibleTableViewCell from "./CollapsibleTableViewCell";
 import TableViewRow from "./TableViewRow";
+import { CollapsibleTableViewRow } from "./CollapsableTableViewRow";
 
 interface TableViewProps {
     headers: string[]
@@ -20,7 +21,13 @@ export const TableView: FC<TableViewProps> = ({ headers, rows }) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => <TableViewRow row={row} CollapsableTableViewRow={CollapsibleTableViewRow}/>)}
+                    {rows.map((row) => (
+                            <>
+                                <TableViewRow row={row} CollapsableTableViewCell={CollapsibleTableViewCell}/>
+                                <CollapsibleTableViewRow row={row} open={true}/>
+                            </>
+                        )
+                    )}
                 </TableBody>
             </Table>
         </TableContainer>

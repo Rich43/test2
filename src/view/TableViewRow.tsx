@@ -1,23 +1,23 @@
 import React, { FunctionComponent } from 'react';
 import { Course } from "../model/tableDataModel";
 import { TableCell, TableRow } from "@mui/material";
-import { CollapsableTableViwRowProps } from "./CollapsibleTableViewRow";
+import { CollapsableTableViewCellProps } from "./CollapsibleTableViewCell";
 
 interface Props {
     row: Course,
-    CollapsableTableViewRow: FunctionComponent<CollapsableTableViwRowProps>
+    CollapsableTableViewCell: FunctionComponent<CollapsableTableViewCellProps>
 }
 
-export const TableViewRow: FunctionComponent<Props> = ({ row, CollapsableTableViewRow }) => {
+export const TableViewRow: FunctionComponent<Props> = ({ row, CollapsableTableViewCell }) => {
     return <TableRow
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
-        <CollapsableTableViewRow row={row}>
+        <CollapsableTableViewCell row={row}>
             <>
                 {Object.keys(row).map(key => typeof row[key as keyof Course] === 'string' ?
                     <TableCell>{row[key as keyof Course]}</TableCell> : <></>)}
             </>
-        </CollapsableTableViewRow>
+        </CollapsableTableViewCell>
     </TableRow>;
 };
 

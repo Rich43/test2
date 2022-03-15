@@ -1,14 +1,14 @@
 import React, { FC, PropsWithChildren, useState } from 'react';
 import { Course } from "../model/tableDataModel";
-import { Collapse, IconButton, TableCell } from "@mui/material";
+import { IconButton, TableCell } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-export interface CollapsableTableViwRowProps {
+export interface CollapsableTableViewCellProps {
     row: Course
 }
 
-export const CollapsibleTableViewRow: FC<PropsWithChildren<CollapsableTableViwRowProps>> = (props) => {
+export const CollapsibleTableViewCell: FC<PropsWithChildren<CollapsableTableViewCellProps>> = (props) => {
     const [open, setOpen] = useState(false);
     return (
         <>
@@ -21,12 +21,9 @@ export const CollapsibleTableViewRow: FC<PropsWithChildren<CollapsableTableViwRo
                     {open ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>}
                 </IconButton>
             </TableCell>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-                Collapse content here
-            </Collapse>
             {props.children}
         </>
     );
 };
 
-export default CollapsibleTableViewRow;
+export default CollapsibleTableViewCell;
