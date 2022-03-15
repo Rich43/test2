@@ -4,7 +4,7 @@ import { Courses, TableDataModel } from "../model/tableDataModel";
 interface Props {
 }
 
-const fetchData = () => fetch('/api');
+const fetchData = () => fetch('http://localhost/api');
 
 function stripFunction (text: string) {
     let newText = text.trim();
