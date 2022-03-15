@@ -35,6 +35,6 @@ export const TableDataFetcher: FunctionComponent<Props> = ({ children }) => {
                 setData(tableRows);
             });
         });
-    }, [data]);
+    }, []);
     return (<TableDataFetcherContext.Provider value={data}>{children}</TableDataFetcherContext.Provider>);
 };
