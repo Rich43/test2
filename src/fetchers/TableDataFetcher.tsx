@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Courses, TableDataModel } from "../model/tableDataModel";
+import { Courses } from "../model/tableDataModel";
 
 interface Props {
 }
 
-const fetchData = () => fetch('http://localhost/api');
+const fetchData = () => fetch('http://localhost/api'); // really needs to be /api in production, I can't get CORS working right
 
 function stripFunction (text: string) {
     let newText = text.trim();
@@ -14,25 +14,17 @@ function stripFunction (text: string) {
     );
 }
 
-export const TableDataFetcherContext = React.createContext<TableDataModel[]>([]);
+const coursesDefaultValue = { courses: [] };
+export const TableDataFetcherContext = React.createContext<Courses>(coursesDefaultValue);
 
 export const TableDataFetcher: FunctionComponent<Props> = ({ children }) => {
-    const [data, setData] = useState<TableDataModel[]>([]);
+    const [data, setData] = useState<Courses>(coursesDefaultValue);
     useEffect(() => {
         fetchData().then(result => {
             result.text().then(text => {
                 let sanitisedText = stripFunction(text);
-                const parsedText = JSON.parse(sanitisedText) as Courses; // I should probably use a type guard here
-                let tableRows: TableDataModel[] = [];
-                parsedText.courses.forEach(course => {
-                    tableRows.push({
-                        courseId: parseInt(course.id),
-                        startDate: course.start,
-                        endDate: course.end,
-                        qualificationType: course.qualification
-                    });
-                });
-                setData(tableRows);
+                const courses = JSON.parse(sanitisedText) as Courses; // I should probably use a type guard here
+                setData(courses);
             });
         });
     }, []);
