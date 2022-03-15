@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FC, PropsWithChildren, useState } from 'react';
 import { Course } from "../model/tableDataModel";
 import { Collapse, IconButton, TableCell } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -8,20 +8,25 @@ export interface CollapsableTableViwRowProps {
     row: Course
 }
 
-export const CollapsibleTableViewRow: FunctionComponent<CollapsableTableViwRowProps> = ({ row, children }) => {
+export const CollapsibleTableViewRow: FC<PropsWithChildren<CollapsableTableViwRowProps>> = (props) => {
     const [open, setOpen] = useState(false);
-    return (<Collapse in={open} timeout="auto" unmountOnExit>
-        <TableCell>
-            <IconButton
-                aria-label="expand row"
-                size="small"
-                onClick={() => setOpen(!open)}
-            >
-                {open ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>}
-            </IconButton>
-        </TableCell>
-        {{ children }}
-    </Collapse>);
+    return (
+        <>
+            <TableCell>
+                <IconButton
+                    aria-label="expand row"
+                    size="small"
+                    onClick={() => setOpen(!open)}
+                >
+                    {open ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>}
+                </IconButton>
+            </TableCell>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+                Collapse content here
+            </Collapse>
+            {props.children}
+        </>
+    );
 };
 
 export default CollapsibleTableViewRow;

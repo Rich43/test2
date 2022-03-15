@@ -13,8 +13,10 @@ export const TableViewRow: FunctionComponent<Props> = ({ row, CollapsableTableVi
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
         <CollapsableTableViewRow row={row}>
-            {Object.keys(row).map(key => typeof row[key as keyof Course] === 'string' ?
-                <TableCell>{row[key as keyof Course]}</TableCell> : <></>)}
+            <>
+                {Object.keys(row).map(key => typeof row[key as keyof Course] === 'string' ?
+                    <TableCell>{row[key as keyof Course]}</TableCell> : <></>)}
+            </>
         </CollapsableTableViewRow>
     </TableRow>;
 };
