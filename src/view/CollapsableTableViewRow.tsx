@@ -1,13 +1,18 @@
 import { Collapse, TableCell, TableRow } from "@mui/material";
 import React, { FC, PropsWithChildren } from "react";
 import { Course } from "../model/tableDataModel";
+import { useAppSelector } from "../model/redux/hooks";
+import { selectRows } from "../model/redux/tableViewReducer";
 
 export interface CollapsableTableViewRowProps {
     row: Course,
     open: boolean
 }
 
-export const CollapsibleTableViewRow: FC<PropsWithChildren<CollapsableTableViewRowProps>> = ({ row, open }) => {
+export const CollapsibleTableViewRow: FC<PropsWithChildren<CollapsableTableViewRowProps>> = ({ row }) => {
+    const tableViewSelector = useAppSelector(selectRows);
+    const matchingRow = tableViewSelector.find(reduxRow => reduxRow.id === row.id);
+    const open = matchingRow ? matchingRow.open : false;
     return (
         <TableRow>
             <TableCell colSpan={5}>

@@ -1,31 +1,31 @@
-import React, { FC, PropsWithChildren, useState } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { Course } from "../model/tableDataModel";
 import { IconButton, TableCell } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { useAppDispatch, useAppSelector } from "../model/redux/hooks";
+import { selectRows, updateRows } from "../model/redux/tableViewReducer";
 
 export interface CollapsableTableViewCellProps {
     row: Course
 }
 
-export const CollapsibleTableViewCellContext = React.createContext<boolean>(false);
-
-export const CollapsibleTableViewCell: FC<PropsWithChildren<CollapsableTableViewCellProps>> = (props) => {
-    const [open, setOpen] = useState(false);
+export const CollapsibleTableViewCell: FC<PropsWithChildren<CollapsableTableViewCellProps>> = ({ row }) => {
+    const tableViewSelector = useAppSelector(selectRows);
+    const dispatcher = useAppDispatch();
+    const matchingRow = tableViewSelector.find(reduxRow => reduxRow.id === row.id);
+    const open = matchingRow ? matchingRow.open : false;
 
     return (
-        <CollapsibleTableViewCellContext.Provider value={open}>
-            <TableCell>
-                <IconButton
-                    aria-label="expand row"
-                    size="small"
-                    onClick={() => setOpen(!open)}
-                >
-                    {open ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>}
-                </IconButton>
-            </TableCell>
-            {props.children}
-        </CollapsibleTableViewCellContext.Provider>
+        <TableCell>
+            <IconButton
+                aria-label="expand row"
+                size="small"
+                onClick={() => dispatcher(updateRows({ id: row.id, open: !open }))}
+            >
+                {open ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>}
+            </IconButton>
+        </TableCell>
     );
 };
 

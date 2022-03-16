@@ -3,7 +3,7 @@ import { RootState } from "./store";
 
 interface Row {
     id: string;
-    checked: boolean;
+    open: boolean;
 }
 
 interface TableViewState {
