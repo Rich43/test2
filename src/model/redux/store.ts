@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { tableViewReducer } from "./tableViewReducer";
 
-const store = configureStore({
+export const store = configureStore({
     reducer: {
         [tableViewReducer.name]: tableViewReducer.reducer
     },
