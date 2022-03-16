@@ -20,7 +20,7 @@ export const TableView: FC<TableViewProps> = ({ headers, rows }) => {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>{/*Unneeded header for expand/collapse*/}</TableCell>
+                        <TableCell sx={{ width: 50 }}>{/*Unneeded header for expand/collapse*/}</TableCell>
                         {headers.map(row => (<TableCell>{row}</TableCell>))}
                     </TableRow>
                 </TableHead>
