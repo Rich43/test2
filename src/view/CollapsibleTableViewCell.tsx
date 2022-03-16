@@ -8,10 +8,13 @@ export interface CollapsableTableViewCellProps {
     row: Course
 }
 
+export const CollapsibleTableViewCellContext = React.createContext<boolean>(false);
+
 export const CollapsibleTableViewCell: FC<PropsWithChildren<CollapsableTableViewCellProps>> = (props) => {
     const [open, setOpen] = useState(false);
+
     return (
-        <>
+        <CollapsibleTableViewCellContext.Provider value={open}>
             <TableCell>
                 <IconButton
                     aria-label="expand row"
@@ -22,7 +25,7 @@ export const CollapsibleTableViewCell: FC<PropsWithChildren<CollapsableTableView
                 </IconButton>
             </TableCell>
             {props.children}
-        </>
+        </CollapsibleTableViewCellContext.Provider>
     );
 };
 
