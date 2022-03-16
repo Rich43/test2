@@ -25,3 +25,6 @@ yarn-error.log*
 /.idea/vcs.xml
 /.idea/codeStyles/codeStyleConfig.xml
 /.idea/markdown.xml
+/.idea/modules.xml
+/.idea/test2.iml
+/.idea/workspace.xml
