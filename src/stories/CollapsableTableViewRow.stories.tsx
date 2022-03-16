@@ -3,6 +3,9 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { CollapsibleTableViewRow } from "../view/CollapsibleTableViewRow";
 import { Provider } from "react-redux";
 import { store } from "../model/redux/store";
+import { Button } from '@mui/material';
+import { useAppDispatch } from "../model/redux/hooks";
+import { updateRows } from "../model/redux/tableViewReducer";
 
 export default {
     title: 'Tables/CollapsibleTableViewRow',
@@ -27,7 +30,20 @@ export default {
     decorators: [(story) => <Provider store={store}>{story()}</Provider>],
 } as ComponentMeta<typeof CollapsibleTableViewRow>;
 
-const Template: ComponentStory<typeof CollapsibleTableViewRow> = (args) => <CollapsibleTableViewRow {...args} />;
+const WrapperComponent = (props: any) => {
+    const dispatch = useAppDispatch();
+    const handleClick = () => {
+        dispatch(updateRows({ id: '1', open: true }));
+    };
+    return (
+        <>
+            <Button onClick={handleClick}>Trigger redux action</Button>
+            <CollapsibleTableViewRow {...props} />
+        </>
+    );
+};
+
+const Template: ComponentStory<typeof CollapsibleTableViewRow> = (args) => <WrapperComponent {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
