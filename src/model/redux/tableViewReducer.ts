@@ -6,7 +6,7 @@ interface Row {
     open: boolean;
 }
 
-interface TableViewState {
+export interface TableViewState {
     rows: Row[];
 }
 

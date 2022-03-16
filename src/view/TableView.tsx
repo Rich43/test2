@@ -2,7 +2,7 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow
 import { Course } from "../model/tableDataModel";
 import { FC } from "react";
 import { TableViewCells } from "./TableViewCells";
-import { CollapsibleTableViewRow } from "./CollapsableTableViewRow";
+import { CollapsibleTableViewRow } from "./CollapsibleTableViewRow";
 import CollapsibleTableViewCell from "./CollapsibleTableViewCell";
 import { useAppSelector } from "../model/redux/hooks";
 import { selectRows } from "../model/redux/tableViewReducer";
@@ -34,7 +34,8 @@ export const TableView: FC<TableViewProps> = ({ headers, rows }) => {
                                         <CollapsibleTableViewCell row={row}/>
                                         <TableViewCells row={row}/>
                                     </TableRow>
-                                    {open ? <CollapsibleTableViewRow row={row} open={true}/> : <></>}
+                                    {open ? <CollapsibleTableViewRow row={row} heading='Students'
+                                                                     tableHeaders={['ID', 'Name']}/> : <></>}
                                 </>
                             );
                         }

@@ -5,12 +5,17 @@ import { useAppSelector } from "../model/redux/hooks";
 import { selectRows } from "../model/redux/tableViewReducer";
 import { SubTable } from "./SubTable";
 
-export interface CollapsableTableViewRowProps {
+export interface CollapsibleTableViewRowProps {
     row: Course,
-    open: boolean
+    heading: string,
+    tableHeaders: string[]
 }
 
-export const CollapsibleTableViewRow: FC<PropsWithChildren<CollapsableTableViewRowProps>> = ({ row }) => {
+export const CollapsibleTableViewRow: FC<PropsWithChildren<CollapsibleTableViewRowProps>> = ({
+                                                                                                 row,
+                                                                                                 heading,
+                                                                                                 tableHeaders
+                                                                                             }) => {
     const tableViewSelector = useAppSelector(selectRows);
     const matchingRow = tableViewSelector.find(reduxRow => reduxRow.id === row.id);
     const open = matchingRow ? matchingRow.open : false;
@@ -18,8 +23,8 @@ export const CollapsibleTableViewRow: FC<PropsWithChildren<CollapsableTableViewR
         <TableRow>
             <TableCell colSpan={5}>
                 <Collapse in={open} timeout="auto" unmountOnExit>
-                    <h2>Students</h2>
-                    <SubTable headers={['Id', 'Name']} rows={row.students}/>
+                    <h2>{heading}</h2>
+                    <SubTable headers={tableHeaders} rows={row.students}/>
                 </Collapse>
             </TableCell>
         </TableRow>

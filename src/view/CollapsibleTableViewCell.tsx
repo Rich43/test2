@@ -6,11 +6,11 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useAppDispatch, useAppSelector } from "../model/redux/hooks";
 import { selectRows, updateRows } from "../model/redux/tableViewReducer";
 
-export interface CollapsableTableViewCellProps {
+export interface CollapsibleTableViewCellProps {
     row: Course
 }
 
-export const CollapsibleTableViewCell: FC<PropsWithChildren<CollapsableTableViewCellProps>> = ({ row }) => {
+export const CollapsibleTableViewCell: FC<PropsWithChildren<CollapsibleTableViewCellProps>> = ({ row }) => {
     const tableViewSelector = useAppSelector(selectRows);
     const dispatcher = useAppDispatch();
     const matchingRow = tableViewSelector.find(reduxRow => reduxRow.id === row.id);
