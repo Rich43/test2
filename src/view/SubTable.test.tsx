@@ -27,3 +27,13 @@ test('renders a table with two headers and five rows', () => {
     expect(screen.getByRole('cell', { name: 'jack' })).toBeInTheDocument();
     expect(screen.getByRole('cell', { name: 'jerry' })).toBeInTheDocument();
 });
+
+test('renders an empty table', () => {
+    render(<SubTable headers={[]} rows={[]}/>);
+    expect(screen.getByRole('table')).toBeInTheDocument();
+    expect(screen.queryByRole('columnheader')).toBeNull();
+    expect(screen.queryAllByRole('cell')).toHaveLength(0);
+    expect(screen.queryAllByRole('row')).toHaveLength(0);
+    expect(screen.queryAllByRole('columnheader')).toHaveLength(0);
+    expect(screen.queryAllByRole('rowheader')).toHaveLength(0);
+});

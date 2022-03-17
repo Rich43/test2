@@ -19,3 +19,8 @@ Primary.args = {
     rows: [{ id: '1', name: 'Row 1' }, { id: '2', name: 'Row 2' }],
 };
 
+export const Empty = Template.bind({});
+Empty.args = {
+    headers: [],
+    rows: [],
+};
