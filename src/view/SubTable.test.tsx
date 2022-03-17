@@ -13,5 +13,17 @@ test('renders a table with two headers and five rows', () => {
             { id: '776', name: 'jerry' }
         ]
     }/>);
-    expect(screen.getByText(/fred/i)).toBeInTheDocument();
+    expect(screen.getByRole('table')).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: 'ID' })).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: 'Name' })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: '2' })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: '5' })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: '8' })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: '368' })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: '776' })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: 'fred' })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: 'john' })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: 'jane' })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: 'jack' })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: 'jerry' })).toBeInTheDocument();
 });
