@@ -12,15 +12,15 @@ export const SubTable: FC<TableViewProps> = ({ headers, rows }) => {
         <Table>
             <TableHead>
                 <TableRow>
-                    {headers.map(row => (<TableCell>{row}</TableCell>))}
+                    {headers.map(row => (<TableCell key={row}>{row}</TableCell>))}
                 </TableRow>
             </TableHead>
             <TableBody>
                 {rows.map((row) => (
-                        <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                            {Object.keys(row).map(key => typeof row[key as keyof Student] === 'string' ?
-                                <TableCell>{row[key as keyof Student]}</TableCell> : <></>)}
-                        </TableRow>
+                    <TableRow key={row.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                        {Object.keys(row).map(key => typeof row[key as keyof Student] === 'string' ?
+                            <TableCell key={key}>{row[key as keyof Student]}</TableCell> : <></>)}
+                    </TableRow>
                     )
                 )}
             </TableBody>

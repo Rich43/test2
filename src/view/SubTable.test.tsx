@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { SubTable } from "./SubTable";
+import { render } from "../testUtil";
 
 test('renders a table with two headers and five rows', () => {
     render(<SubTable headers={['ID', 'Name']} rows={
