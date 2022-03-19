@@ -19,9 +19,9 @@ describe('CollapsibleTableViewCell', () => {
                 },
                 preloadedState: { tableView: initialState }
             });
-
+        const store = createStore();
         render(
-            <Provider store={createStore()}>
+            <Provider store={store}>
                 <CollapsibleTableViewCell
                     row={
                         {
@@ -45,5 +45,12 @@ describe('CollapsibleTableViewCell', () => {
             </Provider>
         );
         expect(screen.getByLabelText('expand row')).toBeInTheDocument();
+        screen.getByLabelText('expand row').click();
+        expect(store.getState().tableView.rows).toEqual([
+            {
+                id: '1',
+                open: true
+            }
+        ]);
     });
 });
