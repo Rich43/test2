@@ -20,13 +20,17 @@ export const CollapsibleTableViewRow: FC<PropsWithChildren<CollapsibleTableViewR
     const matchingRow = tableViewSelector.find(reduxRow => reduxRow.id === row.id);
     const open = matchingRow ? matchingRow.open : false;
     return (
-        <TableRow>
-            <TableCell colSpan={5}>
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                    <h2>{heading}</h2>
-                    <SubTable headers={tableHeaders} rows={row.students}/>
-                </Collapse>
-            </TableCell>
-        </TableRow>
+        <>
+            {row.students.length > 0 &&
+                <TableRow>
+                    <TableCell colSpan={5}>
+                        <Collapse in={open} timeout="auto" unmountOnExit>
+                            <h2>{heading}</h2>
+                            <SubTable headers={tableHeaders} rows={row.students}/>
+                        </Collapse>
+                    </TableCell>
+                </TableRow>
+            }
+        </>
     );
 };
