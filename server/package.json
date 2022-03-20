@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server for Qualsafe client",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rich43/test2.git"
+  },
+  "author": "Richard Ward",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/Rich43/test2/issues"
+  },
+  "homepage": "https://github.com/Rich43/test2#readme"
+}
