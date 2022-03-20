@@ -9,3 +9,5 @@
 /.idea/vcs.xml
 /server/.idea/vcs.xml
 /.idea/workspace.xml
+/server/node_modules/
+/client/node_modules/
