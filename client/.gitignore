@@ -28,3 +28,5 @@ yarn-error.log*
 /.idea/modules.xml
 /.idea/test2.iml
 /.idea/workspace.xml
+/.idea/client.iml
+/.idea/.gitignore
