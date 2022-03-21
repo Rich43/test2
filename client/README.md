@@ -11,7 +11,8 @@ Written in React
 
 Optionally:
 
-5) npm start - for development build
+5) npm start - for development build - you will want to go to the server folder in the root of this repo and start the
+   docker container there.
 
 Qualsafes website was broken due to configuration. You need prod running to get the development environment working.
 
