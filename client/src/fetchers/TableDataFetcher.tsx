@@ -4,7 +4,7 @@ import { Courses } from "../model/tableDataModel";
 interface Props {
 }
 
-const fetchData = () => fetch('http://localhost/api'); // really needs to be /api in production, I can't get CORS working right
+const fetchData = () => fetch('/api');
 
 function stripFunction (text: string) {
     let newText = text.trim();
@@ -22,7 +22,7 @@ export const TableDataFetcher: FunctionComponent<Props> = ({ children }) => {
     useEffect(() => {
         fetchData().then(result => {
             result.text().then(text => {
-                let sanitisedText = stripFunction(text);
+                let sanitisedText = text.startsWith('courses(') ? stripFunction(text) : text;
                 const courses = JSON.parse(sanitisedText) as Courses; // I should probably use a type guard here
                 setData(courses);
             });
