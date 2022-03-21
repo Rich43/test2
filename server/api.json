@@ -1,0 +1,68 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "start": "2013-01-01",
+      "end": "2013-01-31",
+      "qualification": "FAW",
+      "students": [
+        {
+          "id": "1",
+          "name": "Rich Newman-Flint"
+        },
+        {
+          "id": "3",
+          "name": "Bob Smith"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "start": "2013-02-01",
+      "end": "2013-02-29",
+      "qualification": "PAED",
+      "students": [
+        {
+          "id": "4",
+          "name": "Chris Youlden"
+        },
+        {
+          "id": "2",
+          "name": "Dave Thompson"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "start": "2013-03-04",
+      "end": "2013-03-05",
+      "qualification": "EFAW",
+      "students": [
+        {
+          "id": "5",
+          "name": "Robin Siddle"
+        },
+        {
+          "id": "8",
+          "name": "Gwen Smith"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "start": "2013-04-05",
+      "end": "2013-06-29",
+      "qualification": "EFAW",
+      "students": [
+        {
+          "id": "6",
+          "name": "Stephen Smithstone"
+        },
+        {
+          "id": "7",
+          "name": "Jack Wills"
+        }
+      ]
+    }
+  ]
+}
