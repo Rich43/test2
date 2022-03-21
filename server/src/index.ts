@@ -15,6 +15,8 @@ app.get('/api', (req: any, res: any) => {
     res.end(fs.readFileSync('api.json', 'utf8'));
 });
 
-app.server = app.listen(3000, () => {
-    console.log('Listening on port 3000!');
+const PORT = 5000;
+
+app.server = app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}! Check out http://localhost:${PORT}/api`);
 });
