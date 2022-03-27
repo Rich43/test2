@@ -14,3 +14,4 @@
 /server/package-lock.json
 /node_modules/
 /cypress/videos/basic-testing/basic-testing.spec.js.mp4
+/cypress/screenshots/basic-testing/basic-testing.spec.js/example to-do app -- displays two todo items by default (failed).png
