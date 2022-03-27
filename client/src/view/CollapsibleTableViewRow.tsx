@@ -22,8 +22,8 @@ export const CollapsibleTableViewRow: FC<PropsWithChildren<CollapsibleTableViewR
     return (
         <>
             {row.students.length > 0 &&
-                <TableRow>
-                    <TableCell colSpan={5}>
+                <TableRow data-testid="parent-table-row-collapsible">
+                    <TableCell data-testid="parent-table-cell-collapsible" colSpan={5}>
                         <Collapse in={open} timeout="auto" unmountOnExit>
                             <h2>{heading}</h2>
                             <SubTable headers={tableHeaders} rows={row.students}/>

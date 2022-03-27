@@ -6,6 +6,10 @@ const table = "1\t2013-01-01\t2013-01-31\tFAW\n" +
     "4\t2013-04-05\t2013-06-29\tEFAW";
 const tableSplit = table.split("\n").map(line => line.split("\t"));
 
+const students = "1\tRich Newman-Flint\n" +
+    "3\tBob Smith";
+const studentsSplit = students.split("\n").map(line => line.split("\t"));
+
 describe('example to-do app', () => {
     beforeEach(() => {
         cy.visit('http://localhost')
@@ -25,5 +29,9 @@ describe('example to-do app', () => {
                 });
             }
         });
+    });
+
+    it('displays students table with correct data', () => {
+
     });
 });

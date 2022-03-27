@@ -17,7 +17,7 @@ export const CollapsibleTableViewCell: FC<PropsWithChildren<CollapsibleTableView
     const open = matchingRow ? matchingRow.open : false;
 
     return (
-        <TableCell>
+        <TableCell data-testid="parent-table-cell-expand-collapse">
             <IconButton
                 aria-label="expand row"
                 size="small"

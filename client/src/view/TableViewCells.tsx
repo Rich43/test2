@@ -10,7 +10,7 @@ export const TableViewCells: FunctionComponent<Props> = ({ row }) => {
     return (
         <>
             {Object.keys(row).map(key => typeof row[key as keyof Course] === 'string' ?
-                <TableCell>{row[key as keyof Course]}</TableCell> : <></>)}
+                <TableCell data-testid="parent-table-cell">{row[key as keyof Course]}</TableCell> : <></>)}
         </>
     );
 };
