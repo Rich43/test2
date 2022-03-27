@@ -32,10 +32,10 @@ describe('example to-do app', () => {
     });
 
     it('displays students table with correct data', () => {
-        cy.getByTestId('parent-table-cell-expand-collapse').should('have.length', 4);
-        cy.getByTestId('parent-table-cell-expand-collapse').first().get('button').click();
-        cy.getByTestId('sub-table-row').should('have.length', 2);
-        cy.getByTestId('sub-table-row').each(($rowEl, rowIndex, $list) => {
+        cy.get('[data-testid="parent-table-cell-expand-collapse"]').should('have.length', 4);
+        cy.get('[data-testid="parent-table-cell-expand-collapse"] button').first().click();
+        cy.get('[data-testid="sub-table-row"]').should('have.length', 2);
+        cy.get('[data-testid="sub-table-row"]').each(($rowEl, rowIndex, $list) => {
             const tdElements = cy.wrap($rowEl).find('td');
             tdElements.should('have.length', 2);
             tdElements.each(($colEl, columnIndex, $list) => {
