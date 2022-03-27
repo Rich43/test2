@@ -13,3 +13,4 @@
 /client/node_modules/
 /server/package-lock.json
 /node_modules/
+/cypress/videos/basic-testing/basic-testing.spec.js.mp4
